@@ -1,0 +1,75 @@
+# Suzy Parker Games Website
+
+## Project Overview
+
+Static website for Suzy Parker Games built with Vite, TypeScript, and Tailwind CSS. Designed for deployment on Cloudflare Pages.
+
+## Tech Stack
+
+- **Build Tool:** Vite 5.x
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 3.x
+- **Deployment Target:** Cloudflare Pages
+
+## Project Structure
+
+```
+sp-website/
+├── src/
+│   ├── main.ts          # Main TypeScript entry (nav highlighting)
+│   └── style.css         # Tailwind directives + custom components
+├── index.html            # Homepage
+├── about-us.html         # About Us page
+├── contact-us.html       # Contact page
+├── coming-soon.html      # Games placeholder page
+├── package.json
+├── tsconfig.json
+├── vite.config.ts        # Multi-page build config
+├── tailwind.config.js
+└── postcss.config.js
+```
+
+## Development
+
+### Install Dependencies
+```bash
+npm install
+```
+
+### Run Dev Server
+```bash
+npm run dev
+```
+Opens at http://localhost:5173
+
+### Build for Production
+```bash
+npm run build
+```
+Output goes to `dist/` folder.
+
+### Preview Production Build
+```bash
+npm run preview
+```
+
+## Cloudflare Pages Deployment
+
+1. Connect your GitHub repo to Cloudflare Pages
+2. Set build configuration:
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
+3. Deploy
+
+## Adding New Pages
+
+1. Create new `.html` file in root (e.g., `games/game-name.html`)
+2. Add entry to `vite.config.ts` in `build.rollupOptions.input`
+3. Copy header/footer structure from existing pages
+4. Add nav link if needed
+
+## Design System
+
+- **Colors:** Dark theme with gray-900 background, purple-400/500/600 accents
+- **Header:** Fixed top, gray-950 background, contains h1 "Suzy Parker Games"
+- **Components:** Defined in `src/style.css` using @apply (card, nav-link, etc.)
