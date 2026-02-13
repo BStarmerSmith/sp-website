@@ -1,0 +1,27 @@
+# Global
+Font: Poppins
+Font Colour: Black
+
+Background colour: White
+
+
+I want the website designed with one centeral screen and what changes as the page changes (navigation) is only the content with the framework
+- Header (fixed to top (not fixed on mobile))
+- content (restricted to space between header and footer)
+- footer (fixed to bottom (not fixed on mobile))
+
+# Header
+Header Gradient
+Header Text: White
+Going horizontal
+EA98DA
+F3A9CA
+FFBEB6
+
+Then from the right side we should have the links to `Games`, `About us`, `Contact us`
+
+On desktop Should show the `assets/sp-logo-header.png` (64x64) Followed by Suzy Parker Games on the left
+On mobiles it should just show `assets/sp-logo-header.png` and the links should only appear on a drop down when you press a button 
+
+# Footer
+On the left

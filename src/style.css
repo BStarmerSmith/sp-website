@@ -2,28 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply font-poppins text-black bg-white;
+  }
+}
+
 @layer components {
-  .nav-link {
-    @apply text-gray-300 hover:text-white transition-colors duration-200;
+  /* Layout */
+  .site-layout {
+    @apply min-h-screen flex flex-col;
   }
-  
-  .nav-link-active {
-    @apply text-white font-semibold;
+
+  @media (min-width: 768px) {
+    .site-layout {
+      @apply h-screen overflow-hidden;
+    }
   }
-  
-  .page-container {
-    @apply min-h-screen bg-gray-900 text-white;
+
+  .site-content {
+    @apply flex-1 overflow-y-auto;
   }
-  
+
   .content-container {
     @apply max-w-6xl mx-auto px-4 py-12;
   }
-  
+
+  /* Header */
+  .site-header {
+    background: linear-gradient(to right, #EA98DA, #F3A9CA, #FFBEB6);
+    @apply shadow-md z-50;
+  }
+
+  @media (min-width: 768px) {
+    .site-header {
+      @apply sticky top-0;
+    }
+  }
+
+  .header-inner {
+    @apply max-w-6xl mx-auto px-4 py-3 flex items-center justify-between;
+  }
+
+  .header-brand {
+    @apply flex items-center gap-3 no-underline;
+  }
+
+  .header-brand img {
+    @apply w-16 h-16;
+  }
+
+  .header-brand span {
+    @apply text-xl font-semibold text-white hidden md:inline;
+  }
+
+  /* Navigation */
+  .nav-desktop {
+    @apply hidden md:flex items-center gap-6;
+  }
+
+  .nav-link {
+    @apply text-white font-medium hover:opacity-80 transition-opacity duration-200 no-underline;
+  }
+
+  .nav-link-active {
+    @apply font-bold underline underline-offset-4;
+  }
+
+  /* Mobile menu */
+  .mobile-menu-btn {
+    @apply md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 cursor-pointer bg-transparent border-none;
+  }
+
+  .mobile-menu-btn span {
+    @apply block w-6 h-0.5 bg-white transition-transform duration-200;
+  }
+
+  .mobile-nav {
+    @apply md:hidden hidden flex-col gap-4 px-4 pb-4;
+  }
+
+  .mobile-nav.open {
+    @apply flex;
+  }
+
+  /* Footer */
+  .site-footer {
+    @apply bg-gray-100 py-6 border-t border-gray-200;
+  }
+
+  @media (min-width: 768px) {
+    .site-footer {
+      @apply sticky bottom-0;
+    }
+  }
+
+  .footer-inner {
+    @apply max-w-6xl mx-auto px-4 text-sm text-gray-500;
+  }
+
+  /* Reusable components */
   .section-title {
     @apply text-3xl font-bold mb-6;
   }
-  
+
   .card {
-    @apply bg-gray-800 rounded-lg p-6 shadow-lg;
+    @apply bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100;
   }
 }

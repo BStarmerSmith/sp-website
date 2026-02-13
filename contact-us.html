@@ -4,68 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - Suzy Parker Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css">
 </head>
-<body class="page-container">
-  <header class="fixed top-0 left-0 right-0 bg-gray-950 shadow-lg z-50">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/" class="hover:opacity-80 transition-opacity">
-        <h1 class="text-2xl md:text-3xl font-bold text-white">Suzy Parker Games</h1>
+<body class="site-layout">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="header-brand">
+        <img src="/assets/sp-logo-header.png" alt="Suzy Parker Games logo">
+        <span>Suzy Parker Games</span>
       </a>
-      <nav class="flex gap-6">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/about-us.html" class="nav-link">About Us</a>
-        <a href="/contact-us.html" class="nav-link">Contact</a>
+      <nav class="nav-desktop">
         <a href="/coming-soon.html" class="nav-link">Games</a>
+        <a href="/about-us.html" class="nav-link">About Us</a>
+        <a href="/contact-us.html" class="nav-link">Contact Us</a>
       </nav>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
+    <nav class="mobile-nav">
+      <a href="/coming-soon.html" class="nav-link">Games</a>
+      <a href="/about-us.html" class="nav-link">About Us</a>
+      <a href="/contact-us.html" class="nav-link">Contact Us</a>
+    </nav>
   </header>
 
-  <main class="pt-20">
+  <main class="site-content">
     <section class="content-container">
       <h2 class="section-title">Contact Us</h2>
-      
+
       <div class="grid md:grid-cols-2 gap-8">
         <div class="card">
-          <h3 class="text-2xl font-semibold mb-4 text-purple-400">Get In Touch</h3>
-          <p class="text-gray-300 mb-6">
+          <h3 class="text-2xl font-semibold mb-4">Get In Touch</h3>
+          <p class="text-gray-600 mb-6">
             Have questions, feedback, or just want to say hello? We'd love to hear from you!
           </p>
-          
+
           <form class="space-y-4">
             <div>
-              <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-pink focus:border-transparent"
                 placeholder="Your name"
               >
             </div>
             <div>
-              <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-pink focus:border-transparent"
                 placeholder="your@email.com"
               >
             </div>
             <div>
-              <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
-              <textarea 
-                id="message" 
-                name="message" 
-                rows="4" 
-                class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-pink focus:border-transparent resize-none"
                 placeholder="Your message..."
               ></textarea>
             </div>
-            <button 
-              type="submit" 
-              class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
+            <button
+              type="submit"
+              class="w-full bg-brand-pink hover:bg-brand-peach text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
             >
               Send Message
             </button>
@@ -74,30 +87,30 @@
 
         <div class="space-y-6">
           <div class="card">
-            <h3 class="text-xl font-semibold mb-3 text-purple-400">Email</h3>
-            <p class="text-gray-300">hello@suzyparkergames.com</p>
+            <h3 class="text-xl font-semibold mb-3">Email</h3>
+            <p class="text-gray-600">hello@suzyparkergames.com</p>
           </div>
-          
+
           <div class="card">
-            <h3 class="text-xl font-semibold mb-3 text-purple-400">Social Media</h3>
-            <div class="space-y-2 text-gray-300">
+            <h3 class="text-xl font-semibold mb-3">Social Media</h3>
+            <div class="space-y-2 text-gray-600">
               <p>Twitter: @SuzyParkerGames</p>
               <p>Discord: discord.gg/suzyparkergames</p>
               <p>YouTube: Suzy Parker Games</p>
             </div>
           </div>
-          
+
           <div class="card">
-            <h3 class="text-xl font-semibold mb-3 text-purple-400">Press Inquiries</h3>
-            <p class="text-gray-300">press@suzyparkergames.com</p>
+            <h3 class="text-xl font-semibold mb-3">Press Inquiries</h3>
+            <p class="text-gray-600">press@suzyparkergames.com</p>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="bg-gray-950 mt-20 py-8">
-    <div class="max-w-6xl mx-auto px-4 text-center text-gray-500">
+  <footer class="site-footer">
+    <div class="footer-inner">
       <p>&copy; 2026 Suzy Parker Games. All rights reserved.</p>
     </div>
   </footer>

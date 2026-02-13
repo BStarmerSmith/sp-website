@@ -4,33 +4,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Suzy Parker Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css">
 </head>
-<body class="page-container">
-  <header class="fixed top-0 left-0 right-0 bg-gray-950 shadow-lg z-50">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/" class="hover:opacity-80 transition-opacity">
-        <h1 class="text-2xl md:text-3xl font-bold text-white">Suzy Parker Games</h1>
+<body class="site-layout">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="header-brand">
+        <img src="/assets/sp-logo-header.png" alt="Suzy Parker Games logo">
+        <span>Suzy Parker Games</span>
       </a>
-      <nav class="flex gap-6">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/about-us.html" class="nav-link">About Us</a>
-        <a href="/contact-us.html" class="nav-link">Contact</a>
+      <nav class="nav-desktop">
         <a href="/coming-soon.html" class="nav-link">Games</a>
+        <a href="/about-us.html" class="nav-link">About Us</a>
+        <a href="/contact-us.html" class="nav-link">Contact Us</a>
       </nav>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
+    <nav class="mobile-nav">
+      <a href="/coming-soon.html" class="nav-link">Games</a>
+      <a href="/about-us.html" class="nav-link">About Us</a>
+      <a href="/contact-us.html" class="nav-link">Contact Us</a>
+    </nav>
   </header>
 
-  <main class="pt-20">
+  <main class="site-content">
     <section class="content-container">
       <div class="text-center py-20">
-        <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+        <h2 class="text-5xl md:text-6xl font-bold mb-6">
           Welcome to Suzy Parker Games
         </h2>
-        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-          We create engaging and innovative gaming experiences. Stay tuned for exciting new releases!
+        <p class="text-s text-gray-600 mb-8 max-w-4xl mx-auto text-left">
+          We make games that might ruin your evening, <i>in the most entertaining way possible.</i><br><br>
+          At Suzy Parker Games, we design brain-twisting, laugh-inducing, occasionally friendship ending games for people who enjoy a challenge... or just enjoy watching their mates squirm.<br><br>
+          
+          Our games can be played solo on a train, in a pub with a few friends, or during a full blown games night with 20 slightly confused people and one very smug winner.
+          They're fun. They're frustrating. They'll probably keep you up at 3am wondering, “Why can't I stop thinking about that one stupid question?”<br><br>
+
+          <b>Blame Philip.</b> He’s our co-founder and lead question-writer. After a lengthy stay in hospital (don’t ask), he decided to funnel his frustration into puzzles designed to gently torment innocent players. <b>We tried to stop him. We failed.</b><br><br>
+
+          Made by a bunch of creatives, techies and <i>one dangerously enthusiastic project manager</i>, Suzy Parker Games is here to bring you joy, chaos, and possibly a mild existential crisis.<br><br>
+
+          If you’re a little bit weird, <b>you’ll feel right at home.</b>
         </p>
-        <a href="/coming-soon.html" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
+        <a href="/coming-soon.html" class="inline-block bg-brand-pink hover:bg-brand-peach text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
           View Our Games
         </a>
       </div>
@@ -39,23 +62,23 @@
     <section class="content-container">
       <div class="grid md:grid-cols-3 gap-6">
         <div class="card">
-          <h3 class="text-xl font-semibold mb-3 text-purple-400">Innovative Gameplay</h3>
-          <p class="text-gray-400">Pushing boundaries with unique game mechanics and immersive experiences.</p>
+          <h3 class="text-xl font-semibold mb-3">Innovative Gameplay</h3>
+          <p class="text-gray-600">Pushing boundaries with unique game mechanics and immersive experiences.</p>
         </div>
         <div class="card">
-          <h3 class="text-xl font-semibold mb-3 text-purple-400">Community Focused</h3>
-          <p class="text-gray-400">Building games with our players in mind, listening to feedback every step of the way.</p>
+          <h3 class="text-xl font-semibold mb-3">Community Focused</h3>
+          <p class="text-gray-600">Our goal is to create games that bring friends and family together (and sometimes apart)</p>
         </div>
         <div class="card">
-          <h3 class="text-xl font-semibold mb-3 text-purple-400">Quality First</h3>
-          <p class="text-gray-400">Dedicated to delivering polished, high-quality games you'll love to play.</p>
+          <h3 class="text-xl font-semibold mb-3">Handcraft Quality</h3>
+          <p class="text-gray-600">We think the human touch is vital to any experience. All our games are made and designed in house!</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="bg-gray-950 mt-20 py-8">
-    <div class="max-w-6xl mx-auto px-4 text-center text-gray-500">
+  <footer class="site-footer">
+    <div class="footer-inner">
       <p>&copy; 2026 Suzy Parker Games. All rights reserved.</p>
     </div>
   </footer>
