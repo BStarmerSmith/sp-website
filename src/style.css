@@ -109,4 +109,126 @@
   .card {
     @apply bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100;
   }
+
+  /* ── Home page layout ────────────────────────────────── */
+
+  .home-layout {
+    @apply bg-black text-white overflow-x-hidden;
+    height: 1000vh;
+  }
+
+  .home-layout .site-header {
+    @apply sticky top-0 z-50;
+  }
+
+  /* Ambient glow blobs */
+  .glow {
+    @apply fixed rounded-full pointer-events-none;
+    width: 600px;
+    height: 600px;
+    filter: blur(100px);
+    opacity: 0.3;
+    z-index: 0;
+  }
+
+  .glow-1 {
+    background: radial-gradient(circle, rgba(255, 77, 255, 0.4), transparent);
+    top: -200px;
+    left: -200px;
+    animation: glow-float 15s ease-in-out infinite;
+  }
+
+  .glow-2 {
+    background: radial-gradient(circle, rgba(77, 148, 255, 0.4), transparent);
+    bottom: -200px;
+    right: -200px;
+    animation: glow-float 18s ease-in-out infinite reverse;
+  }
+
+  .glow-3 {
+    background: radial-gradient(circle, rgba(138, 77, 255, 0.4), transparent);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: glow-pulse 10s ease-in-out infinite;
+  }
+
+  /* Card stage — fixed viewport centered container */
+  .card-stage {
+    @apply fixed top-0 left-0 w-full h-screen flex justify-center items-center;
+    perspective: 2000px;
+    z-index: 1;
+  }
+
+  .card-wrapper {
+    width: 400px;
+    height: 600px;
+    @apply relative;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+  }
+
+  .playing-card {
+    @apply absolute inset-0 overflow-hidden flex justify-center items-center;
+    border-radius: 24px;
+    backface-visibility: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(10, 10, 20, 0.9);
+  }
+
+  .card-front {
+    transform: rotateY(0deg);
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    background: rgba(20, 10, 30, 0.9);
+  }
+
+  .card-image {
+    @apply w-full h-full object-cover block;
+    border-radius: 22px;
+  }
+
+  /* Scroll hint */
+  .scroll-indicator {
+    @apply fixed bottom-10 left-1/2 z-50 flex flex-col items-center gap-2;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    transition: opacity 0.5s ease;
+  }
+
+  .scroll-indicator.hidden-indicator {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .scroll-indicator svg {
+    @apply w-6 h-6;
+    animation: scroll-bounce 2s infinite;
+  }
+
+  @media (max-width: 767px) {
+    .card-wrapper {
+      width: 320px;
+      height: 480px;
+    }
+  }
+}
+
+@keyframes glow-float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(50px, 50px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
 }
