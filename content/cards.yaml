@@ -1,0 +1,72 @@
+# Card deck content
+# ─────────────────────────────────────────────────────────────────────
+# Each card entry defines one playing card in the deck.
+#
+# Fields:
+#   id        Unique identifier — for reference only, not shown in UI
+#   position  Display order, starting at 1
+#   image     Filename (without extension) from /assets/cards/ — e.g. 1 → 1.png
+#   side      (optional) The side page that slides out when the user swipes
+#     header  Heading text
+#     body    Body content in Markdown. Supports:
+#               - **bold**, *italic*, [links](url)
+#               - Images: ![alt text](/assets/sidetext/filename.png)
+#               - Lists, paragraphs, line breaks
+#
+# Back images are cycled automatically from the backs list below.
+# ─────────────────────────────────────────────────────────────────────
+
+backs:
+  - back_1.png
+  - back_2.png
+
+cards:
+  - id: welcome
+    position: 1
+    image: 1
+    side:
+      header: Welcome to Suzy Parker Games
+      body: |
+        We make games that might ruin your evening — *in the most entertaining way possible.*
+
+        Brain-twisting, laugh-inducing, occasionally friendship-ending games for people who enjoy a challenge... or just enjoy watching their mates squirm.
+
+  - id: games
+    position: 2
+    image: 2
+    side:
+      header: Our Games
+      body: |
+        Our games can be played **solo on a train**, in a pub with a few friends, or during a full-blown games night with 20 slightly confused people and one very smug winner.
+
+        They're fun. They're frustrating. They'll probably keep you up at 3am wondering why you can't stop thinking about that one stupid question.
+
+  - id: philip
+    position: 3
+    image: 3
+    side:
+      header: Blame Philip
+      body: |
+        Philip is our co-founder and lead question-writer. After a lengthy stay in hospital *(don't ask)*, he decided to funnel his frustration into puzzles designed to gently torment innocent players.
+
+        **We tried to stop him. We failed.**
+
+  - id: craft
+    position: 4
+    image: 4
+    side:
+      header: Handcrafted Quality
+      body: |
+        We believe the human touch is vital to any experience. Every game is designed and made in-house by a bunch of creatives, techies, and *one dangerously enthusiastic project manager.*
+
+  - id: community
+    position: 5
+    image: 5
+    side:
+      header: A Little Bit Weird?
+      body: |
+        **Perfect. You'll feel right at home.**
+
+        Suzy Parker Games is here to bring you joy, chaos, and possibly a mild existential crisis.
+
+        [Get in touch →](/contact-us.html)
