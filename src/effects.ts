@@ -37,6 +37,12 @@ export function initCardEffects(): void {
   }
   tick()
 
+  const setPointerVars = (fromLeft: number, fromTop: number) => {
+    stage.style.setProperty('--pointer-from-left', String(fromLeft))
+    stage.style.setProperty('--pointer-from-top', String(fromTop))
+  }
+  setPointerVars(0.5, 0.5)
+
   stage.addEventListener('mousemove', (e: MouseEvent) => {
     hovering = true
     const rect = tiltStage.getBoundingClientRect()
@@ -44,11 +50,13 @@ export function initCardEffects(): void {
     const py = clamp(round((100 / rect.height) * (e.clientY - rect.top)))
     targetRX = round(-(px - 50) / 3.5)
     targetRY = round((py - 50) / 3.5)
+    setPointerVars(px / 100, py / 100)
     scheduleIdleReset()
   })
 
   stage.addEventListener('mouseleave', () => {
     if (idleTimer !== null) clearTimeout(idleTimer)
     resetTilt()
+    setPointerVars(0.5, 0.5)
   })
 }
