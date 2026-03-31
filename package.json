@@ -9,10 +9,15 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "^5.3.3",
-    "vite": "^5.0.12",
-    "tailwindcss": "^3.4.1",
+    "@modyfi/vite-plugin-yaml": "^1.1.1",
+    "autoprefixer": "^10.4.17",
     "postcss": "^8.4.33",
-    "autoprefixer": "^10.4.17"
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12"
+  },
+  "dependencies": {
+    "marked": "^17.0.5",
+    "ogl": "^1.0.11"
   }
 }

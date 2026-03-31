@@ -9,77 +9,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css">
 </head>
-<body class="site-layout">
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="/" class="header-brand">
-        <img src="/assets/sp-logo-header.png" alt="Suzy Parker Games logo">
-        <span>Suzy Parker Games</span>
-      </a>
-      <nav class="nav-desktop">
-        <a href="/coming-soon.html" class="nav-link">Games</a>
-        <a href="/about-us.html" class="nav-link">About Us</a>
-        <a href="/contact-us.html" class="nav-link">Contact Us</a>
-      </nav>
-      <button class="mobile-menu-btn" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-    <nav class="mobile-nav">
-      <a href="/coming-soon.html" class="nav-link">Games</a>
-      <a href="/about-us.html" class="nav-link">About Us</a>
-      <a href="/contact-us.html" class="nav-link">Contact Us</a>
-    </nav>
-  </header>
+<body class="home-layout">
 
-  <main class="site-content">
-    <section class="content-container">
-      <div class="text-center py-2">
-        <h2 class="text-5xl md:text-6xl font-bold mb-6">
-          Welcome to Suzy Parker Games
-        </h2>
-        <p class="text-s text-gray-600 mb-8 max-w-4xl mx-auto text-left">
-          We make games that might ruin your evening, <i>in the most entertaining way possible.</i><br><br>
-          At Suzy Parker Games, we design brain-twisting, laugh-inducing, occasionally friendship ending games for people who enjoy a challenge... or just enjoy watching their mates squirm.<br><br>
-          
-          Our games can be played solo on a train, in a pub with a few friends, or during a full blown games night with 20 slightly confused people and one very smug winner.
-          They're fun. They're frustrating. They'll probably keep you up at 3am wondering, “Why can't I stop thinking about that one stupid question?”<br><br>
+  <div id="auroraContainer" aria-hidden="true"></div>
 
-          <b>Blame Philip.</b> He’s our co-founder and lead question-writer. After a lengthy stay in hospital (don’t ask), he decided to funnel his frustration into puzzles designed to gently torment innocent players. <b>We tried to stop him. We failed.</b><br><br>
+  <a href="/" class="home-logo" aria-label="Suzy Parker Games home">
+    <img src="/assets/sp-logo-header.png" alt="Suzy Parker Games" />
+  </a>
 
-          Made by a bunch of creatives, techies and <i>one dangerously enthusiastic project manager</i>, Suzy Parker Games is here to bring you joy, chaos, and possibly a mild existential crisis.<br><br>
-
-          If you’re a little bit weird, <b>you’ll feel right at home.</b>
-        </p>
-      </div>
-    </section>
-
-    <section class="content-container">
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card">
-          <h3 class="text-xl font-semibold mb-3">Innovative Gameplay</h3>
-          <p class="text-gray-600">Pushing boundaries with unique game mechanics and immersive experiences.</p>
+  <div class="card-stage" id="cardStage">
+    <div class="card-tilt-stage" id="cardTiltStage">
+      <div class="card-wrapper" id="cardWrapper">
+        <div class="playing-card card-front">
+          <img class="card-image" id="cardFrontImage" src="/assets/cards/1.png" alt="Card front" />
         </div>
-        <div class="card">
-          <h3 class="text-xl font-semibold mb-3">Community Focused</h3>
-          <p class="text-gray-600">Our goal is to create games that bring friends and family together (and sometimes apart)</p>
-        </div>
-        <div class="card">
-          <h3 class="text-xl font-semibold mb-3">Handcraft Quality</h3>
-          <p class="text-gray-600">We think the human touch is vital to any experience. All our games are made and designed in house!</p>
+        <div class="playing-card card-back">
+          <img class="card-image" id="cardBackImage" src="/assets/cards/back_1.png" alt="Card back" />
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <p>&copy; 2026 Suzy Parker Games. All rights reserved.</p>
     </div>
-  </footer>
+  </div>
 
-  <script type="module" src="/src/main.ts"></script>
+  <div class="flip-indicator" id="flipIndicator" aria-hidden="true">
+    <div class="flip-arrow" id="flipUp">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+      </svg>
+    </div>
+    <div class="flip-arrow" id="flipDown">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </div>
+
+<script type="module" src="/src/main.ts"></script>
 </body>
 </html>
