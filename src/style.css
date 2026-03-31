@@ -280,6 +280,16 @@
     margin-bottom: 0.25rem;
   }
 
+  /* ── Card tilt stage ─────────────────────────────────── */
+
+  .card-tilt-stage {
+    width: 400px;
+    height: 600px;
+    flex-shrink: 0;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
   /* ── Flip indicator ──────────────────────────────────── */
 
   .flip-indicator {
@@ -314,6 +324,11 @@
   /* ── Mobile adjustments ──────────────────────────────── */
 
   @media (max-width: 767px) {
+    .card-tilt-stage {
+      width: 300px;
+      height: 450px;
+    }
+
     .card-wrapper {
       width: 300px;
       height: 450px;

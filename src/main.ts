@@ -2,6 +2,7 @@ import './style.css'
 import { CardDeck } from './card'
 import { Aurora } from './aurora'
 import { buildCards, type YamlDeck } from './content'
+import { initCardEffects } from './effects'
 import deckContent from '../content/cards.yaml'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const backImg = document.getElementById('cardBackImage') as HTMLImageElement | null
   const flipUp = document.getElementById('flipUp') as HTMLElement | null
   const flipDown = document.getElementById('flipDown') as HTMLElement | null
+
+  initCardEffects()
 
   if (stage && wrapper && frontImg && backImg) {
     new CardDeck(stage, wrapper, frontImg, backImg, {
