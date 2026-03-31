@@ -19,6 +19,8 @@
 backs:
   - back_1.png
   - back_2.png
+  - back_3.png
+  - back_4.png
 
 cards:
   - id: welcome

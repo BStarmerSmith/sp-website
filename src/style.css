@@ -173,6 +173,24 @@
     background: rgba(20, 10, 30, 0.9);
   }
 
+  .card-back::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    pointer-events: none;
+    background:
+      linear-gradient(115deg, transparent 20%, oklch(73.587% 0.12345 201.591) 45%, oklch(0.75 0.18 320) 55%, transparent 80%),
+      conic-gradient(from 45deg, oklch(0.8 0.12 60), oklch(0.7 0.15 180), oklch(0.8 0.12 300), oklch(0.8 0.12 60));
+    background-size: 250% 250%, 200% 200%;
+    background-position:
+      calc(var(--pointer-from-left, 0.5) * 100%) calc(var(--pointer-from-top, 0.5) * 100%),
+      calc(var(--pointer-from-left, 0.5) * 100%) calc(var(--pointer-from-top, 0.5) * 100%);
+    mix-blend-mode: color-dodge;
+    opacity: 0.9;
+    transition: background-position 0.1s ease-out;
+  }
+
   .card-image {
     @apply w-full h-full object-cover block;
     border-radius: 22px;

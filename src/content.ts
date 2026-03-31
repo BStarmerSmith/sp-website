@@ -22,7 +22,7 @@ export interface YamlDeck {
 
 // ── Transformer ───────────────────────────────────────────────────────
 
-const DEFAULT_BACKS = ['back_1.png', 'back_2.png']
+const DEFAULT_BACKS = ['back_1.png', 'back_2.png', 'back_3.png', 'back_4.png']
 
 export function buildCards(deck: YamlDeck): Card[] {
   const backs = deck.backs ?? DEFAULT_BACKS

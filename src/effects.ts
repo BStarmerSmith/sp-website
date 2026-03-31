@@ -1,6 +1,8 @@
 const clamp = (v: number, min = 0, max = 100) => Math.min(Math.max(v, min), max)
 const round = (v: number, p = 3) => parseFloat(v.toFixed(p))
 
+const IDLE_TIMEOUT_MS = 1500
+
 export function initCardEffects(): void {
   const tiltStage = document.getElementById('cardTiltStage') as HTMLElement | null
   const stage = document.getElementById('cardStage') as HTMLElement | null
@@ -12,6 +14,18 @@ export function initCardEffects(): void {
   let targetRY = 0
   let currentRX = 0
   let currentRY = 0
+  let idleTimer: ReturnType<typeof setTimeout> | null = null
+
+  const resetTilt = () => {
+    hovering = false
+    targetRX = 0
+    targetRY = 0
+  }
+
+  const scheduleIdleReset = () => {
+    if (idleTimer !== null) clearTimeout(idleTimer)
+    idleTimer = setTimeout(resetTilt, IDLE_TIMEOUT_MS)
+  }
 
   // Smooth tilt lerp loop
   const tick = () => {
@@ -23,19 +37,26 @@ export function initCardEffects(): void {
   }
   tick()
 
+  const setPointerVars = (fromLeft: number, fromTop: number) => {
+    stage.style.setProperty('--pointer-from-left', String(fromLeft))
+    stage.style.setProperty('--pointer-from-top', String(fromTop))
+  }
+  setPointerVars(0.5, 0.5)
+
   stage.addEventListener('mousemove', (e: MouseEvent) => {
+    hovering = true
     const rect = tiltStage.getBoundingClientRect()
     const px = clamp(round((100 / rect.width) * (e.clientX - rect.left)))
     const py = clamp(round((100 / rect.height) * (e.clientY - rect.top)))
     targetRX = round(-(px - 50) / 3.5)
     targetRY = round((py - 50) / 3.5)
+    setPointerVars(px / 100, py / 100)
+    scheduleIdleReset()
   })
 
-  stage.addEventListener('mouseenter', () => { hovering = true })
-
   stage.addEventListener('mouseleave', () => {
-    hovering = false
-    targetRX = 0
-    targetRY = 0
+    if (idleTimer !== null) clearTimeout(idleTimer)
+    resetTilt()
+    setPointerVars(0.5, 0.5)
   })
 }
