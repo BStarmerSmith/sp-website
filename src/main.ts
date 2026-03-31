@@ -1,5 +1,6 @@
 import './style.css'
 import { CardDeck } from './card'
+import { Aurora } from './aurora'
 import { buildCards, type YamlDeck } from './content'
 import deckContent from '../content/cards.yaml'
 
@@ -24,6 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileNav = document.querySelector('.mobile-nav')
   if (menuBtn && mobileNav) {
     menuBtn.addEventListener('click', () => mobileNav.classList.toggle('open'))
+  }
+
+  // Aurora background — home page only
+  const auroraContainer = document.getElementById('auroraContainer')
+  if (auroraContainer) {
+    new Aurora({ container: auroraContainer })
   }
 
   // Card deck — home page only
