@@ -19,25 +19,31 @@ backs:
 
 cards:
   - id: welcome
+    name: Welcome Page
     position: 1
     image: 1
 
   - id: why-axis
+    name: The Why Axis
     position: 2
     image: 2
 
   - id: wangle
+    name: Wangle
     position: 3
     image: 3
 
   - id: middle-bit
+    name: The Middle Bit
     position: 4
     image: 4
 
   - id: dynamite-squad
+    name: Dynamite Squad
     position: 5
     image: 5
 
   - id: contact-us
+    name: Contact Us
     position: 6
     image: 6
