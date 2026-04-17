@@ -9,6 +9,7 @@ export interface SidePage {
 }
 
 export interface Card {
+  name?: string
   front: CardFace
   back: CardFace
   sidePage?: SidePage
@@ -35,6 +36,7 @@ export class CardDeck {
   private readonly stage: HTMLElement
   private readonly frontImg: HTMLImageElement
   private readonly backImg: HTMLImageElement
+  private readonly backCardEl: HTMLElement
   private readonly cards: Card[]
   private readonly dur: number
   private readonly onStateChange?: (state: CardDeckState) => void
@@ -57,6 +59,7 @@ export class CardDeck {
     this.wrapper = wrapper
     this.frontImg = frontImg
     this.backImg = backImg
+    this.backCardEl = backImg.closest('.card-back') as HTMLElement
     this.cards = config.cards
     this.dur = config.animationDurationMs ?? 600
     // Last step is the front of the final card — backs are only shown between cards
@@ -96,6 +99,18 @@ export class CardDeck {
     const card = this.cards[index]
     this.setFace(this.frontImg, card.front)
     this.setFace(this.backImg, card.back)
+    this.setBackFilmEffect(index)
+  }
+
+  private setBackFilmEffect(cardIndex: number): void {
+    // Vary gradient angle and hue offset for each card
+    const angle = 90 + (cardIndex * 37) % 180  // Different angle per card (90-270°)
+    const hueOffset = (cardIndex * 53) % 360    // Different hue shift per card
+    const conicAngle = (cardIndex * 29) % 360   // Different conic start angle
+    
+    this.backCardEl.style.setProperty('--film-gradient-angle', `${angle}deg`)
+    this.backCardEl.style.setProperty('--film-hue-offset', String(hueOffset))
+    this.backCardEl.style.setProperty('--film-conic-angle', `${conicAngle}deg`)
   }
 
   private emitState(): void {
@@ -153,28 +168,6 @@ export class CardDeck {
     this.setSidePagePosition(this.sideOpen ? 1 : 0, false)
   }
 
-  // ── Side page open / close ────────────────────────────────
-
-  private openSide(): void {
-    if (this.sideOpen || !this.currentCard().sidePage || this.animating) return
-    this.animating = true
-    this.sideOpen = true
-    this.applyCardTransform(true)
-    this.setSidePagePosition(1, true)
-    this.emitState()
-    setTimeout(() => { this.animating = false }, this.dur)
-  }
-
-  private closeSide(): void {
-    if (!this.sideOpen || this.animating) return
-    this.animating = true
-    this.sideOpen = false
-    this.applyCardTransform(true)
-    this.setSidePagePosition(0, true)
-    this.emitState()
-    setTimeout(() => { this.animating = false }, this.dur)
-  }
-
   // ── Card flip ────────────────────────────────────────────
 
   advance(direction: 1 | -1): void {
@@ -215,21 +208,69 @@ export class CardDeck {
     }, this.dur)
   }
 
+  jumpToCard(targetCardIndex: number): void {
+    if (this.animating || this.sideOpen) return
+    if (targetCardIndex < 0 || targetCardIndex >= this.cards.length) return
+
+    const currentCardIdx = this.cardIndex()
+    if (currentCardIdx === targetCardIndex) return
+
+    const distance = Math.abs(targetCardIndex - currentCardIdx)
+    
+    // For large jumps (more than 1 card away), do single flip then jump
+    if (distance > 1) {
+      this.animating = true
+      
+      // Flip to show back (keep current card's back visible)
+      const nextStep = this.step + 1
+      this.step = nextStep
+      this.applyCardTransform(true)
+      this.emitState()
+      
+      // After flip animation, pause briefly, then jump to target card
+      setTimeout(() => {
+        const targetStep = targetCardIndex * 2 // Front face of target card
+        this.step = targetStep
+        // Load the new card while we're showing the back (not visible yet)
+        this.loadCard(targetCardIndex)
+        this.syncSidePage()
+        // Small delay to ensure card is loaded before animating to front
+        setTimeout(() => {
+          this.applyCardTransform(true) // Animate the flip back to front
+          this.emitState()
+          
+          setTimeout(() => {
+            this.animating = false
+          }, this.dur)
+        }, 50) // Brief delay to ensure DOM updates
+      }, this.dur + 200) // Add 200ms pause between flips to reduce disorientation
+    } else {
+      // For adjacent cards, flip through sequentially
+      const targetStep = targetCardIndex * 2
+      const direction = targetStep > this.step ? 1 : -1
+      const stepsToMove = Math.abs(targetStep - this.step)
+      
+      let stepsDone = 0
+      const doFlip = () => {
+        if (stepsDone >= stepsToMove) {
+          return
+        }
+        
+        stepsDone++
+        this.advance(direction)
+        
+        if (stepsDone < stepsToMove) {
+          setTimeout(doFlip, this.dur)
+        }
+      }
+      
+      doFlip()
+    }
+  }
+
   // ── Event binding ────────────────────────────────────────
 
   private bindEvents(): void {
-
-    // Click card → open side page (front face only — even step)
-    this.wrapper.addEventListener('click', () => {
-      if (this.animating) return
-      if (this.step % 2 === 0 && this.currentCard().sidePage) this.openSide()
-    })
-
-    // Click side page → close
-    this.sidePageEl.addEventListener('click', () => {
-      if (this.animating) return
-      this.closeSide()
-    })
 
     // Wheel: vertical flips cards
     window.addEventListener('wheel', (e) => {
@@ -270,22 +311,6 @@ export class CardDeck {
         case 'ArrowUp':
           e.preventDefault()
           if (!this.sideOpen) this.advance(-1)
-          break
-        case 'ArrowLeft':
-        case 'ArrowRight':
-          e.preventDefault()
-          if (this.sideOpen) this.closeSide()
-          else if (this.step % 2 === 0) this.openSide()
-          break
-        case 'Escape':
-          e.preventDefault()
-          if (this.sideOpen) this.closeSide()
-          break
-        case 'Enter':
-        case ' ':
-          e.preventDefault()
-          if (this.sideOpen) this.closeSide()
-          else if (this.step % 2 === 0) this.openSide()
           break
       }
     })

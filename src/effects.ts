@@ -3,6 +3,11 @@ const round = (v: number, p = 3) => parseFloat(v.toFixed(p))
 
 const IDLE_TIMEOUT_MS = 1500
 
+// ── Configuration ────────────────────────────────────────────
+// Set to true to enable mouse tracking for card tilt and film effects
+const ENABLE_MOUSE_TRACKING = false
+// ─────────────────────────────────────────────────────────────
+
 export function initCardEffects(): void {
   const tiltStage = document.getElementById('cardTiltStage') as HTMLElement | null
   const stage = document.getElementById('cardStage') as HTMLElement | null
@@ -43,20 +48,23 @@ export function initCardEffects(): void {
   }
   setPointerVars(0.5, 0.5)
 
-  stage.addEventListener('mousemove', (e: MouseEvent) => {
-    hovering = true
-    const rect = tiltStage.getBoundingClientRect()
-    const px = clamp(round((100 / rect.width) * (e.clientX - rect.left)))
-    const py = clamp(round((100 / rect.height) * (e.clientY - rect.top)))
-    targetRX = round(-(px - 50) / 3.5)
-    targetRY = round((py - 50) / 3.5)
-    setPointerVars(px / 100, py / 100)
-    scheduleIdleReset()
-  })
+  // Only attach mouse listeners if tracking is enabled
+  if (ENABLE_MOUSE_TRACKING) {
+    stage.addEventListener('mousemove', (e: MouseEvent) => {
+      hovering = true
+      const rect = tiltStage.getBoundingClientRect()
+      const px = clamp(round((100 / rect.width) * (e.clientX - rect.left)))
+      const py = clamp(round((100 / rect.height) * (e.clientY - rect.top)))
+      targetRX = round(-(px - 50) / 3.5)
+      targetRY = round((py - 50) / 3.5)
+      setPointerVars(px / 100, py / 100)
+      scheduleIdleReset()
+    })
 
-  stage.addEventListener('mouseleave', () => {
-    if (idleTimer !== null) clearTimeout(idleTimer)
-    resetTilt()
-    setPointerVars(0.5, 0.5)
-  })
+    stage.addEventListener('mouseleave', () => {
+      if (idleTimer !== null) clearTimeout(idleTimer)
+      resetTilt()
+      setPointerVars(0.5, 0.5)
+    })
+  }
 }

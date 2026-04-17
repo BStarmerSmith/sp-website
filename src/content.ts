@@ -10,6 +10,7 @@ export interface YamlSide {
 
 export interface YamlCard {
   id: string
+  name?: string
   position: number
   image: number
   side?: YamlSide
@@ -29,6 +30,7 @@ export function buildCards(deck: YamlDeck): Card[] {
   const sorted = [...deck.cards].sort((a, b) => a.position - b.position)
 
   return sorted.map((entry, i) => ({
+    name: entry.name,
     front: {
       src: `/assets/cards/${entry.image}.png`,
       alt: entry.id,

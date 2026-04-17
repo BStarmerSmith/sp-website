@@ -7,6 +7,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Preload all card images for seamless navigation -->
+  <link rel="preload" as="image" href="/assets/cards/1.png">
+  <link rel="preload" as="image" href="/assets/cards/2.png">
+  <link rel="preload" as="image" href="/assets/cards/3.png">
+  <link rel="preload" as="image" href="/assets/cards/4.png">
+  <link rel="preload" as="image" href="/assets/cards/5.png">
+  <link rel="preload" as="image" href="/assets/cards/6.png">
+  <link rel="preload" as="image" href="/assets/cards/back_1.png">
+  <link rel="preload" as="image" href="/assets/cards/back_2.png">
+  <link rel="preload" as="image" href="/assets/cards/back_3.png">
+  <link rel="preload" as="image" href="/assets/cards/back_4.png">
+  <link rel="preload" as="image" href="/assets/cards/back_5.png">
+  
   <link rel="stylesheet" href="/src/style.css">
 </head>
 <body class="home-layout">
@@ -30,18 +44,7 @@
     </div>
   </div>
 
-  <div class="flip-indicator" id="flipIndicator" aria-hidden="true">
-    <div class="flip-arrow" id="flipUp">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
-      </svg>
-    </div>
-    <div class="flip-arrow" id="flipDown">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-      </svg>
-    </div>
-  </div>
+  <div class="card-nav-dots" id="cardNavDots" aria-label="Card navigation"></div>
 
 <script type="module" src="/src/main.ts"></script>
 </body>
