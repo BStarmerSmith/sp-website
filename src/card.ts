@@ -221,7 +221,7 @@ export class CardDeck {
     if (distance > 1) {
       this.animating = true
       
-      // Flip to show back
+      // Flip to show back (keep current card's back visible)
       const nextStep = this.step + 1
       this.step = nextStep
       this.applyCardTransform(true)
@@ -231,14 +231,18 @@ export class CardDeck {
       setTimeout(() => {
         const targetStep = targetCardIndex * 2 // Front face of target card
         this.step = targetStep
+        // Load the new card while we're showing the back (not visible yet)
         this.loadCard(targetCardIndex)
         this.syncSidePage()
-        this.applyCardTransform(true) // Animate the flip back to front
-        this.emitState()
-        
+        // Small delay to ensure card is loaded before animating to front
         setTimeout(() => {
-          this.animating = false
-        }, this.dur)
+          this.applyCardTransform(true) // Animate the flip back to front
+          this.emitState()
+          
+          setTimeout(() => {
+            this.animating = false
+          }, this.dur)
+        }, 50) // Brief delay to ensure DOM updates
       }, this.dur + 200) // Add 200ms pause between flips to reduce disorientation
     } else {
       // For adjacent cards, flip through sequentially
