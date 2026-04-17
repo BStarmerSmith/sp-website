@@ -151,7 +151,6 @@
     flex-shrink: 0;
     position: relative;
     transform-style: preserve-3d;
-    cursor: pointer;
     /* transition managed entirely by JS */
   }
 
@@ -223,7 +222,6 @@
     backdrop-filter: blur(16px);
     padding: 2rem 1.75rem;
     color: white;
-    cursor: pointer;
     /* opacity, transform and pointer-events are managed entirely by JS */
     opacity: 0;
     pointer-events: none;

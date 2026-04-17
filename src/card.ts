@@ -153,28 +153,6 @@ export class CardDeck {
     this.setSidePagePosition(this.sideOpen ? 1 : 0, false)
   }
 
-  // ── Side page open / close ────────────────────────────────
-
-  private openSide(): void {
-    if (this.sideOpen || !this.currentCard().sidePage || this.animating) return
-    this.animating = true
-    this.sideOpen = true
-    this.applyCardTransform(true)
-    this.setSidePagePosition(1, true)
-    this.emitState()
-    setTimeout(() => { this.animating = false }, this.dur)
-  }
-
-  private closeSide(): void {
-    if (!this.sideOpen || this.animating) return
-    this.animating = true
-    this.sideOpen = false
-    this.applyCardTransform(true)
-    this.setSidePagePosition(0, true)
-    this.emitState()
-    setTimeout(() => { this.animating = false }, this.dur)
-  }
-
   // ── Card flip ────────────────────────────────────────────
 
   advance(direction: 1 | -1): void {
@@ -219,18 +197,6 @@ export class CardDeck {
 
   private bindEvents(): void {
 
-    // Click card → open side page (front face only — even step)
-    this.wrapper.addEventListener('click', () => {
-      if (this.animating) return
-      if (this.step % 2 === 0 && this.currentCard().sidePage) this.openSide()
-    })
-
-    // Click side page → close
-    this.sidePageEl.addEventListener('click', () => {
-      if (this.animating) return
-      this.closeSide()
-    })
-
     // Wheel: vertical flips cards
     window.addEventListener('wheel', (e) => {
       e.preventDefault()
@@ -270,22 +236,6 @@ export class CardDeck {
         case 'ArrowUp':
           e.preventDefault()
           if (!this.sideOpen) this.advance(-1)
-          break
-        case 'ArrowLeft':
-        case 'ArrowRight':
-          e.preventDefault()
-          if (this.sideOpen) this.closeSide()
-          else if (this.step % 2 === 0) this.openSide()
-          break
-        case 'Escape':
-          e.preventDefault()
-          if (this.sideOpen) this.closeSide()
-          break
-        case 'Enter':
-        case ' ':
-          e.preventDefault()
-          if (this.sideOpen) this.closeSide()
-          else if (this.step % 2 === 0) this.openSide()
           break
       }
     })
