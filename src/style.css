@@ -176,14 +176,17 @@
   }
 
   /* Legal links — fixed row above the bottom edge, below the nav dots.
-     Deliberately NOT safe-area inset. .card-nav-dots is fixed at bottom: 32px
-     and is 12px tall, so it occupies 32–44px from the viewport bottom, and the
-     clearance measured in a browser is 2px (dots bottom 1129, legal top 1131).
-     Adding `bottom: max(16px, env(safe-area-inset-bottom))` puts this row at
-     34–48px wherever the inset is non-zero (notched iPhones), overlapping the
-     dots it is supposed to sit below. Applying the inset properly means moving
-     .home-legal AND .card-nav-dots together — a design decision for the repo
-     owner, not a one-line change here. Don't re-add it in isolation. */
+     These two rules are a pair: this row sits at 16px and is ~14px tall
+     (16–30px from the bottom), and .card-nav-dots is lifted to 48px to leave
+     a clear gap above it. Change one offset and you have to check the other,
+     or they close up — they were 2px apart before the dots were raised.
+
+     Deliberately NOT safe-area inset. `bottom: max(16px,
+     env(safe-area-inset-bottom))` here alone pushes this row up into the dots
+     wherever the inset is non-zero (notched iPhones). Doing it properly means
+     insetting both rules together so they move as one — worth doing, but it is
+     a design decision about the whole bottom cluster, not a one-line change.
+     Don't re-add it to this rule in isolation. */
   .home-legal {
     position: fixed;
     bottom: 16px;
@@ -393,9 +396,11 @@
 
   /* ── Card navigation dots ──────────────────────────────── */
 
+  /* Lifted from 32px to clear .home-legal below it — see the comment on that
+     rule; the two offsets are a pair and move together. */
   .card-nav-dots {
     position: fixed;
-    bottom: 32px;
+    bottom: 48px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 50;
