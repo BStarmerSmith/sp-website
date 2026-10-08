@@ -17,16 +17,14 @@ The marketing website for Suzy Parker Games.
 sp-website/
 ├── assets/
 │   ├── cards/          # Playing card images (1.png–5.png, back_1.png, back_2.png)
-│   ├── headshots/      # Team photos
-│   └── sp-logo*.png    # Brand logos
+│   └── sp-logo-header.png  # Brand logo
 ├── src/
 │   ├── card.ts         # CardDeck class — scroll-driven card flip logic
-│   ├── main.ts         # Entry point — nav behaviour, CardDeck initialisation
+│   ├── main.ts         # Entry point — Aurora background, CardDeck initialisation
 │   └── style.css       # Tailwind base + custom component styles
 ├── index.html          # Home — scroll-driven playing card experience
-├── about-us.html       # Team page
-├── contact-us.html     # Contact form + socials
-├── coming-soon.html    # Games placeholder
+├── privacy.html        # Privacy Policy — canonical for the whole game suite
+├── terms.html          # Terms of Service — canonical for the whole game suite
 ├── vite.config.ts      # Multi-page build config
 ├── tailwind.config.js  # Custom fonts and brand colours
 └── wrangler.jsonc      # Cloudflare Pages deployment config
@@ -67,6 +65,18 @@ Wrangler reads `wrangler.jsonc` and serves the `dist/` directory.
 1. Create a new `.html` file at the project root.
 2. Add it to the `rollupOptions.input` object in `vite.config.ts`.
 3. Copy the header/footer markup from an existing page.
+4. Add it to the Project structure block above. There are six pages; if that
+   block and `rollupOptions.input` disagree, the block is the one that is wrong.
+
+## Legal pages
+
+`privacy.html` and `terms.html` are the **canonical** Privacy Policy and Terms
+of Service for every game Suzy Parker Games Limited makes, not just this site.
+The apps link to them by URL (`the-middle-bit.co.uk/privacy.html` and
+`/terms.html` 301 here), and app-store submissions pin these URLs, so the paths
+must not change. Every claim on them is traced to code; see
+`middlebit/docs/superpowers/notes/2026-10-06-legal-and-lockout-status.md` before
+editing either one.
 
 ## Playing card — how it works
 
