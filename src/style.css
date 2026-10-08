@@ -137,13 +137,17 @@
   }
 
   /* Legal links — fixed row above the bottom edge, below the nav dots.
-     The safe-area inset keeps the row clear of iOS Safari's bottom toolbar and
-     the home indicator; without it the home page's only legal link can sit
-     underneath them. The plain 16px stays first for browsers without env(). */
+     Deliberately NOT safe-area inset. .card-nav-dots is fixed at bottom: 32px
+     and is 12px tall, so it occupies 32–44px from the viewport bottom, and the
+     clearance measured in a browser is 2px (dots bottom 1129, legal top 1131).
+     Adding `bottom: max(16px, env(safe-area-inset-bottom))` puts this row at
+     34–48px wherever the inset is non-zero (notched iPhones), overlapping the
+     dots it is supposed to sit below. Applying the inset properly means moving
+     .home-legal AND .card-nav-dots together — a design decision for the repo
+     owner, not a one-line change here. Don't re-add it in isolation. */
   .home-legal {
     position: fixed;
     bottom: 16px;
-    bottom: max(16px, env(safe-area-inset-bottom));
     left: 0;
     right: 0;
     z-index: 50;
