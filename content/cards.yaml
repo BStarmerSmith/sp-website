@@ -4,7 +4,10 @@
 #
 # Fields:
 #   id        Unique identifier — for reference only, not shown in UI
-#   position  Display order, starting at 1
+#   position  Display order — lower shows first, independent of the image
+#             filename. Gaps are fine (only relative order matters).
+#             Optional — cards without one go last, in the order listed here.
+#   hidden    Optional. true leaves the card out of the deck entirely.
 #   image     Filename (without extension) from /assets/cards/ — e.g. 1 → 1.png
 #
 # Back images are cycled automatically from the backs list below.
@@ -20,30 +23,32 @@ backs:
 cards:
   - id: welcome
     name: Welcome Page
-    position: 1
     image: 1
-
-  - id: why-axis
-    name: The Why Axis
-    position: 2
-    image: 2
-
-  - id: wangle
-    name: Wangle
-    position: 3
-    image: 3
+    position: 1
 
   - id: middle-bit
     name: The Middle Bit
-    position: 4
     image: 4
+    position: 2
 
-  - id: dynamite-squad
-    name: Dynamite Squad
-    position: 5
-    image: 5
+  - id: wangle
+    name: Wangle
+    image: 3
+    position: 3
 
   - id: contact-us
     name: Contact Us
-    position: 6
+    position: 4
     image: 6
+
+  - id: why-axis
+    name: The Why Axis
+    image: 2
+    hidden: true
+
+  - id: dynamite-squad
+    name: Dynamite Squad
+    image: 5
+    hidden: true
+
+  
