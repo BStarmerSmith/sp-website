@@ -1,0 +1,15 @@
+# Pages this site used to have. They were removed when the site became three
+# pages — the card home page, and the two legal documents — but they were live
+# long enough to be linked and indexed, so they redirect rather than 404.
+#
+# Both spellings of each: Cloudflare serves /about-us from about-us.html, so
+# both forms were reachable and both are now dead.
+#
+# 301, not 302: the move is permanent and we want the old URLs to stop being
+# re-crawled in their own right.
+/about-us        /  301
+/about-us.html   /  301
+/contact-us      /  301
+/contact-us.html /  301
+/coming-soon     /  301
+/coming-soon.html /  301
