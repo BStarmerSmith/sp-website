@@ -71,15 +71,15 @@
           <table class="w-full min-w-[36rem] text-left text-sm">
             <thead>
               <tr class="border-b border-gray-300">
-                <th class="p-3 font-semibold">What</th>
-                <th class="p-3 font-semibold">Why</th>
-                <th class="p-3 font-semibold">How long we keep it</th>
+                <th scope="col" class="p-3 font-semibold">What</th>
+                <th scope="col" class="p-3 font-semibold">Why</th>
+                <th scope="col" class="p-3 font-semibold">How long we keep it</th>
               </tr>
             </thead>
             <tbody class="text-gray-600">
               <tr class="border-b border-gray-200">
                 <td class="p-3 align-top">Your email address, display name and password (stored hashed, never in plain text)</td>
-                <td class="p-3 align-top">Your account, signing in, and password resets</td>
+                <td class="p-3 align-top">Your account, signing in, password resets, verifying your email address, and telling you about a deletion you asked for</td>
                 <td class="p-3 align-top">Until you delete your account, then 30 more days</td>
               </tr>
               <tr class="border-b border-gray-200">
@@ -93,7 +93,7 @@
                 <td class="p-3 align-top">Until you delete your account, then 30 more days</td>
               </tr>
               <tr class="border-b border-gray-200">
-                <td class="p-3 align-top">Our server logs: the IP address a request came from, and for sign-in attempts the email address used</td>
+                <td class="p-3 align-top">Our server logs: for every request, the IP address it came from, the page or endpoint asked for, the browser or app that asked, and the page you came from; and for sign-in attempts, password changes and deletion requests, the email address used</td>
                 <td class="p-3 align-top">Keeping accounts secure and investigating faults and abuse</td>
                 <td class="p-3 align-top">Only as long as we need them; they rotate out as our servers are redeployed</td>
               </tr>
@@ -119,11 +119,13 @@
           building a profile of anyone.
         </p>
         <p class="text-gray-600 leading-relaxed mt-4">
-          We keep ordinary server logs, as any website does. They record which
-          IP address a request came from and, when someone tries to sign in or
-          change a password, the email address used &mdash; that is what makes a
-          log useful if an account is attacked. We don't use them to build a
-          profile, and we don't join them to what you've played.
+          We keep ordinary server logs, as any website does. Every request
+          leaves a line recording the IP address it came from, what was asked
+          for, the browser or app that asked, and the page it came from; and
+          when someone tries to sign in, change a password or delete an
+          account, the email address used is recorded too &mdash; that is what
+          makes a log useful if an account is attacked. We don't use them to
+          build a profile, and we don't join them to what you've played.
         </p>
       </div>
 
@@ -132,8 +134,10 @@
         <p class="text-gray-600 leading-relaxed">
           We handle your account, progress and subscription because we need to
           in order to provide the game you asked for. We show personalised ads
-          only where you've consented, and you can change that choice at any
-          time. We keep server logs and anonymous play counts because we have a
+          only where you've consented. If you want that consent changed or
+          withdrawn, email
+          <a href="mailto:privacy@suzyparkergames.co.uk">privacy@suzyparkergames.co.uk</a>
+          and we'll act on it. We keep server logs and anonymous play counts because we have a
           legitimate interest in keeping the games secure and knowing how much
           they're played.
         </p>
@@ -167,17 +171,26 @@
           <li><strong>Google AdSense and AdMob</strong> &mdash; the ads shown to players without Premium.</li>
           <li><strong>Amazon SES</strong> &mdash; delivering our emails, such as password resets.</li>
           <li><strong>Cloudflare</strong> &mdash; hosting this website.</li>
+          <li><strong>Hetzner</strong> &mdash; the hosting company whose servers our games and your account data run on.</li>
           <li><strong>Google Fonts</strong> &mdash; the typeface this site and our games use. Your browser fetches it from Google, which means Google sees your IP address when a page loads.</li>
+          <li><strong>Expo</strong> &mdash; delivering updates to our mobile apps. Each time you open one it checks Expo for a newer version, which means Expo sees your IP address, your platform and which version you're running.</li>
         </ul>
         <p class="text-gray-600 leading-relaxed mt-4">
-          Your account and game data is held on our own servers. Some of the
-          companies above operate outside the UK and EEA; where that happens,
-          standard contractual clauses or equivalent safeguards apply.
+          Your account and game data sits on servers we run ourselves, rented
+          from the hosting company named above. Some of the companies listed
+          operate outside the UK and EEA; where that happens, standard
+          contractual clauses or equivalent safeguards apply.
         </p>
         <p class="text-gray-600 leading-relaxed mt-4">
-          You'll be asked about ad tracking the first time you play. We show
-          no ads at all until you've answered, and Premium subscribers never
-          see any.
+          Where the law requires it &mdash; in the UK and the EEA, and anywhere
+          else with the same rule &mdash; you'll be asked about ad tracking the
+          first time you play, and we show no ads until you've answered.
+          Elsewhere no prompt is required and none is shown, so ads can appear
+          straight away; we still show nothing until the consent step has
+          finished running. Premium subscribers never see any ads, anywhere.
+          Wherever you are, you can email
+          <a href="mailto:privacy@suzyparkergames.co.uk">privacy@suzyparkergames.co.uk</a>
+          to object to personalised advertising.
         </p>
       </div>
 
@@ -208,12 +221,16 @@
           welcome back any time.
         </p>
         <p class="text-gray-600 leading-relaxed mb-4">
-          <strong>Two things deliberately remain,</strong> and we'd rather say
-          so than imply otherwise. The anonymous count that a puzzle was
+          <strong>Three things deliberately remain,</strong> and we'd rather
+          say so than imply otherwise. The anonymous count that a puzzle was
           answered stays, because it contains nothing that identifies you &mdash;
           removing it would quietly rewrite how much our games have been
-          played. And if you created a puzzle or an invite code, that stays
-          too, with the link to you removed.
+          played. If you created a puzzle or an invite code, that stays too,
+          with the link to you removed. And the server logs described above
+          are not rewritten: lines already written keep the email address they
+          recorded, so a sign-in or a password change from before you deleted
+          the account can still be seen in them until those logs rotate out,
+          which may be after the 30 days are up.
         </p>
         <p class="text-gray-600 leading-relaxed mb-4">
           <strong>Payment records aren't ours to delete.</strong> Apple,
