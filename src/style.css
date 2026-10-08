@@ -101,6 +101,10 @@
     @apply max-w-6xl mx-auto px-4 text-sm text-gray-500 text-center;
   }
 
+  .footer-legal {
+    @apply mt-2;
+  }
+
   /* Reusable components */
   .section-title {
     @apply text-3xl font-bold mb-6;
@@ -130,6 +134,28 @@
     width: 56px;
     height: 56px;
     object-fit: contain;
+  }
+
+  /* Legal links — fixed row above the bottom edge, below the nav dots */
+  .home-legal {
+    position: fixed;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .home-legal a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .home-legal a:hover {
+    color: rgba(255, 255, 255, 0.85);
   }
 
   /* Aurora background */
