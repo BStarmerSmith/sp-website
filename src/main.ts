@@ -6,29 +6,10 @@ import { initCardEffects } from './effects'
 import deckContent from '../content/cards.yaml'
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Active nav link highlighting (inner pages only — home has no nav)
-  const currentPath = window.location.pathname
-  const navLinks = document.querySelectorAll<HTMLAnchorElement>('nav a')
+  // No nav and no burger menu: the site is three pages — the card home
+  // page, and the two legal pages, which carry only the logo back to it.
 
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href')
-    if (
-      href === currentPath ||
-      (currentPath === '/' && href === '/') ||
-      (currentPath.endsWith('index.html') && href === '/')
-    ) {
-      link.classList.add('nav-link-active')
-    }
-  })
-
-  // Mobile menu toggle (inner pages only)
-  const menuBtn = document.querySelector('.mobile-menu-btn')
-  const mobileNav = document.querySelector('.mobile-nav')
-  if (menuBtn && mobileNav) {
-    menuBtn.addEventListener('click', () => mobileNav.classList.toggle('open'))
-  }
-
-  // Aurora background — home page only
+  // Aurora background — the home page and both legal pages, which share it.
   const auroraContainer = document.getElementById('auroraContainer')
   if (auroraContainer) {
     new Aurora({ container: auroraContainer })

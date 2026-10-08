@@ -9,109 +9,148 @@
 }
 
 @layer components {
-  /* Layout */
-  .site-layout {
-    @apply min-h-screen flex flex-col;
+  /* ── Legal pages (privacy, terms) ─────────────────────
+     Same ground as the home page: black, the aurora fixed behind, logo
+     top-left. The difference is that this one scrolls — .home-layout is
+     `overflow-hidden h-screen` because the card stage owns the viewport,
+     whereas a policy is long-form and has to scroll past a background that
+     stays put. That is the whole of the distinction, so these rules set the
+     scroll behaviour and the reading column and otherwise borrow the home
+     page's furniture. */
+  .legal-layout {
+    @apply bg-black text-white min-h-screen;
   }
 
-  @media (min-width: 768px) {
-    .site-layout {
-      @apply h-screen overflow-hidden;
-    }
+  .legal-content {
+    position: relative;
+    z-index: 1;
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 7rem 1.5rem 4rem;
   }
 
-  .site-content {
-    @apply flex-1 overflow-y-auto;
+  .legal-title {
+    @apply text-3xl font-bold;
+    margin-bottom: 0.5rem;
   }
 
-  .content-container {
-    @apply max-w-6xl mx-auto px-4 py-4;
+  .legal-updated {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 2.5rem;
   }
 
-  /* Header */
-  .site-header {
-    background: linear-gradient(to right, #EA98DA, #F3A9CA, #FFBEB6);
-    @apply shadow-md z-50;
+  /* Each former card. Translucent rather than a flat panel so the aurora
+     still reads behind the text instead of being boxed out of it. */
+  .legal-section {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(2px);
   }
 
-  @media (min-width: 768px) {
-    .site-header {
-      @apply sticky top-0;
-    }
+  .legal-section h2 {
+    @apply text-xl font-semibold;
+    margin-bottom: 1rem;
   }
 
-  .header-inner {
-    @apply max-w-6xl mx-auto px-4 py-3 flex items-center justify-between;
+  .legal-section h3 {
+    @apply text-base font-semibold;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 
-  .header-brand {
-    @apply flex items-center gap-3 no-underline;
+  .legal-section p,
+  .legal-section li {
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
   }
 
-  .header-brand img {
-    @apply w-16 h-16;
+  .legal-section p {
+    margin-bottom: 1rem;
   }
 
-  .header-brand span {
-    @apply text-xl font-semibold text-white hidden md:inline;
+  .legal-section p:last-child {
+    margin-bottom: 0;
   }
 
-  /* Navigation */
-  .nav-desktop {
-    @apply hidden md:flex items-center gap-6;
+  .legal-section strong {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
   }
 
-  .nav-link {
-    @apply text-white font-medium hover:opacity-80 transition-opacity duration-200 no-underline;
+  .legal-section ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
   }
 
-  .nav-link-active {
-    @apply font-bold underline underline-offset-4;
+  .legal-section li {
+    margin-bottom: 0.5rem;
   }
 
-  /* Mobile menu */
-  .mobile-menu-btn {
-    @apply md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 cursor-pointer bg-transparent border-none;
+  .legal-content a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
-  .mobile-menu-btn span {
-    @apply block w-6 h-0.5 bg-white transition-transform duration-200;
+  .legal-content a:hover {
+    color: rgba(255, 255, 255, 0.7);
   }
 
-  .mobile-nav {
-    @apply md:hidden hidden flex-col gap-4 px-4 pb-4;
+  /* The data table is wider than a phone. It scrolls inside this wrapper so
+     the page itself never scrolls sideways; min-width on the table is what
+     makes the wrapper actually overflow rather than crushing three columns. */
+  .legal-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .mobile-nav.open {
-    @apply flex;
+  .legal-table {
+    width: 100%;
+    min-width: 36rem;
+    text-align: left;
+    font-size: 0.875rem;
+    border-collapse: collapse;
   }
 
-  /* Footer */
-  .site-footer {
-    @apply bg-gray-100 py-6 border-t border-gray-200;
+  .legal-table th {
+    padding: 0.75rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  @media (min-width: 768px) {
-    .site-footer {
-      @apply sticky bottom-0;
-    }
+  .legal-table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    color: rgba(255, 255, 255, 0.75);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .footer-inner {
-    @apply max-w-6xl mx-auto px-4 text-sm text-gray-500 text-center;
+  .legal-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.45);
   }
 
-  .footer-legal {
-    @apply mt-2;
+  .legal-footer-links {
+    margin-top: 0.5rem;
   }
 
-  /* Reusable components */
-  .section-title {
-    @apply text-3xl font-bold mb-6;
+  .legal-footer a {
+    color: inherit;
+    text-decoration: none;
   }
 
-  .card {
-    @apply bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100;
+  .legal-footer a:hover {
+    color: rgba(255, 255, 255, 0.85);
   }
 
   /* ── Home page ───────────────────────────────────────── */

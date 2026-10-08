@@ -17,16 +17,12 @@ The marketing website for Suzy Parker Games.
 sp-website/
 ├── assets/
 │   ├── cards/          # Playing card images (1.png–5.png, back_1.png, back_2.png)
-│   ├── headshots/      # Team photos
-│   └── sp-logo*.png    # Brand logos
+│   └── sp-logo-header.png  # Brand logo
 ├── src/
 │   ├── card.ts         # CardDeck class — scroll-driven card flip logic
-│   ├── main.ts         # Entry point — nav behaviour, CardDeck initialisation
+│   ├── main.ts         # Entry point — Aurora background, CardDeck initialisation
 │   └── style.css       # Tailwind base + custom component styles
 ├── index.html          # Home — scroll-driven playing card experience
-├── about-us.html       # Team page
-├── contact-us.html     # Contact form + socials
-├── coming-soon.html    # Games placeholder
 ├── privacy.html        # Privacy Policy — canonical for the whole game suite
 ├── terms.html          # Terms of Service — canonical for the whole game suite
 ├── vite.config.ts      # Multi-page build config
