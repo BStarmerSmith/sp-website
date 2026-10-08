@@ -93,9 +93,14 @@
                 <td class="p-3 align-top">Until you delete your account, then 30 more days</td>
               </tr>
               <tr class="border-b border-gray-200">
-                <td class="p-3 align-top">Our server logs: for every request, the IP address it came from, the page or endpoint asked for, the browser or app that asked, and the page you came from; and for sign-in attempts, password changes and deletion requests, the email address used</td>
+                <td class="p-3 align-top">Our server logs: for every request, the IP address it came from, the page or endpoint asked for, the browser or app that asked, and the page you came from; and for sign-in attempts, password changes and resets, email-verification resends and deletion requests, the email address used</td>
                 <td class="p-3 align-top">Keeping accounts secure and investigating faults and abuse</td>
                 <td class="p-3 align-top">Only as long as we need them; they rotate out as our servers are redeployed</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="p-3 align-top">Anything you send us by email &mdash; your address, your message and whatever you choose to put in it &mdash; when you ask for support or exercise one of the rights below</td>
+                <td class="p-3 align-top">Replying to you, and keeping a record that we did</td>
+                <td class="p-3 align-top">While we deal with it, and for as long afterwards as we need to show how we handled it</td>
               </tr>
               <tr class="border-b border-gray-200">
                 <td class="p-3 align-top">Advertising identifiers &mdash; unless you have Premium</td>
@@ -103,27 +108,35 @@
                 <td class="p-3 align-top">Held by Google under their own policy. We never store them</td>
               </tr>
               <tr>
-                <td class="p-3 align-top">A count that a puzzle was answered</td>
-                <td class="p-3 align-top">Knowing how much our games get played</td>
+                <td class="p-3 align-top">When you play without an account: a record that a puzzle was answered, which game it was, how it ended, the guesses you typed, how many hints you revealed and how long it took</td>
+                <td class="p-3 align-top">Knowing how much our games get played, and how people get on with the puzzles</td>
                 <td class="p-3 align-top">Kept indefinitely. It contains nothing that identifies you</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p class="text-gray-600 leading-relaxed mt-4">
-          That last row is worth being precise about. When a puzzle is
-          answered we record that it happened, which game it was, and how it
-          ended. We attach no account, no session, no device identifier and
-          no IP address &mdash; so it counts answers, not people. It is the reason
-          we can tell you how many puzzles our games have served without
-          building a profile of anyone.
+          That last row is worth being precise about, because it is kept
+          indefinitely. It is recorded <strong>only when you play
+          without an account</strong>, and only once the puzzle has ended. We
+          record that it happened, which game it was, how it ended, the
+          guesses you typed, how many hints you revealed and how long you
+          spent. We attach no account, no session, no device identifier and no
+          IP address &mdash; so it counts answers, not people: there is no
+          identifier in it that could link two of these records to the same
+          person, or trace one back to you. That is also why we can keep it
+          indefinitely &mdash; there is nothing in it to identify anyone. It is the reason we can tell you how many
+          puzzles our games have served without building a profile of anyone.
+          If you play with an account, nothing of this kind is sent &mdash; your
+          progress is simply saved to your account instead.
         </p>
         <p class="text-gray-600 leading-relaxed mt-4">
           We keep ordinary server logs, as any website does. Every request
           leaves a line recording the IP address it came from, what was asked
           for, the browser or app that asked, and the page it came from; and
-          when someone tries to sign in, change a password or delete an
-          account, the email address used is recorded too &mdash; that is what
+          when someone tries to sign in, change or reset a password, ask for
+          another verification email, or delete an account, the email address
+          used is recorded too &mdash; that is what
           makes a log useful if an account is attacked. We don't use them to
           build a profile, and we don't join them to what you've played.
         </p>
@@ -139,7 +152,9 @@
           <a href="mailto:privacy@suzyparkergames.co.uk">privacy@suzyparkergames.co.uk</a>
           and we'll act on it. We keep server logs and anonymous play counts because we have a
           legitimate interest in keeping the games secure and knowing how much
-          they're played.
+          they're played, and we keep the email you send us because we have a
+          legitimate interest in answering it and in being able to show how we
+          did.
         </p>
       </div>
 
@@ -157,8 +172,17 @@
           loads instantly, a few interface preferences, and &mdash; if you play
           without an account &mdash; that day's progress and a note of which
           puzzles have already been counted, so one answer isn't counted twice.
-          Nothing there is shared with anyone, and clearing your browser data
-          removes all of it.
+          On the web, clearing your browser data removes all of it. In our
+          mobile apps your sign-in tokens are held in the device's own secure
+          storage, which clearing data inside the app does not touch &mdash;
+          signing out removes them, and so does uninstalling the app.
+        </p>
+        <p class="text-gray-600 leading-relaxed mt-4">
+          None of that is shared with anyone, with one exception we would
+          rather name: if you play without an account, the anonymous record
+          described in the table above is sent to us when the puzzle ends, and
+          it includes the guesses you typed. It carries nothing that
+          identifies you.
         </p>
       </div>
 
@@ -169,10 +193,11 @@
           <li><strong>RevenueCat</strong> and <strong>Stripe</strong> &mdash; managing subscriptions and taking payment.</li>
           <li><strong>Apple</strong> and <strong>Google Play</strong> &mdash; purchases made inside our mobile apps.</li>
           <li><strong>Google AdSense and AdMob</strong> &mdash; the ads shown to players without Premium.</li>
-          <li><strong>Amazon SES</strong> &mdash; delivering our emails, such as password resets.</li>
+          <li><strong>Amazon SES</strong> &mdash; delivering the emails we send you, such as password resets and deletion notices.</li>
+          <li><strong>Email you send us.</strong> Mail to the addresses on this page is received and kept while we deal with it, by whoever hosts each mailbox &mdash; and one of our published addresses, <a href="/contact-us.html">on our contact page</a>, is a Google one, so Google handles anything sent there.</li>
           <li><strong>Cloudflare</strong> &mdash; hosting this website.</li>
           <li><strong>Hetzner</strong> &mdash; the hosting company whose servers our games and your account data run on.</li>
-          <li><strong>Google Fonts</strong> &mdash; the typeface this site and our games use. Your browser fetches it from Google, which means Google sees your IP address when a page loads.</li>
+          <li><strong>Google Fonts</strong> &mdash; the typeface this website and the web version of our games use. Your browser fetches it from Google, which means Google sees your IP address when a page loads. Our mobile apps use your device's own font and fetch nothing from Google.</li>
           <li><strong>Expo</strong> &mdash; delivering updates to our mobile apps. Each time you open one it checks Expo for a newer version, which means Expo sees your IP address, your platform and which version you're running.</li>
         </ul>
         <p class="text-gray-600 leading-relaxed mt-4">
@@ -182,13 +207,29 @@
           contractual clauses or equivalent safeguards apply.
         </p>
         <p class="text-gray-600 leading-relaxed mt-4">
-          Where the law requires it &mdash; in the UK and the EEA, and anywhere
-          else with the same rule &mdash; you'll be asked about ad tracking the
-          first time you play, and we show no ads until you've answered.
-          Elsewhere no prompt is required and none is shown, so ads can appear
-          straight away; we still show nothing until the consent step has
-          finished running. Premium subscribers never see any ads, anywhere.
-          Wherever you are, you can email
+          Before any ad loads, you may be asked up to two separate questions,
+          and nothing is shown until they have finished.
+        </p>
+        <p class="text-gray-600 leading-relaxed mt-4">
+          <strong>On iPhone and iPad, Apple asks everyone.</strong> In our
+          mobile apps, Apple's own permission prompt asks whether we may track
+          you for advertising. Every player who is going to be shown ads is
+          asked, wherever in the world they are, before an ad is ever
+          requested. That prompt is Apple's, your answer is held by Apple, and
+          we only ever see the result.
+        </p>
+        <p class="text-gray-600 leading-relaxed mt-4">
+          <strong>Where the law requires it, Google asks too.</strong> In the
+          UK and the EEA, and anywhere else with the same rule, a consent form
+          asks whether you want personalised advertising &mdash; Google's
+          consent message in the web version of our games, and Google's own
+          form inside the mobile apps. Where that form isn't required you
+          won't see one, and ads can appear straight away. Apple's question is
+          still asked on an iPhone or iPad either way.
+        </p>
+        <p class="text-gray-600 leading-relaxed mt-4">
+          Premium subscribers see no ads anywhere, and are asked neither
+          question. Wherever you are, you can email
           <a href="mailto:privacy@suzyparkergames.co.uk">privacy@suzyparkergames.co.uk</a>
           to object to personalised advertising.
         </p>
@@ -221,16 +262,18 @@
           welcome back any time.
         </p>
         <p class="text-gray-600 leading-relaxed mb-4">
-          <strong>Three things deliberately remain,</strong> and we'd rather
-          say so than imply otherwise. The anonymous count that a puzzle was
+          <strong>Four things deliberately remain,</strong> and we'd rather
+          say so than imply otherwise. The anonymous record of a puzzle being
           answered stays, because it contains nothing that identifies you &mdash;
           removing it would quietly rewrite how much our games have been
           played. If you created a puzzle or an invite code, that stays too,
-          with the link to you removed. And the server logs described above
-          are not rewritten: lines already written keep the email address they
+          with the link to you removed. The server logs described above are
+          not rewritten: lines already written keep the email address they
           recorded, so a sign-in or a password change from before you deleted
           the account can still be seen in them until those logs rotate out,
-          which may be after the 30 days are up.
+          which may be after the 30 days are up. Finally, email you sent us
+          stays in the mailbox it arrived in; tell us you want it gone too and
+          we'll delete it.
         </p>
         <p class="text-gray-600 leading-relaxed mb-4">
           <strong>Payment records aren't ours to delete.</strong> Apple,

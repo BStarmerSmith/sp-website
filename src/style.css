@@ -136,10 +136,14 @@
     object-fit: contain;
   }
 
-  /* Legal links — fixed row above the bottom edge, below the nav dots */
+  /* Legal links — fixed row above the bottom edge, below the nav dots.
+     The safe-area inset keeps the row clear of iOS Safari's bottom toolbar and
+     the home indicator; without it the home page's only legal link can sit
+     underneath them. The plain 16px stays first for browsers without env(). */
   .home-legal {
     position: fixed;
     bottom: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom));
     left: 0;
     right: 0;
     z-index: 50;
