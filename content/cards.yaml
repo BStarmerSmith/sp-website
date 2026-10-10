@@ -9,6 +9,8 @@
 #             Optional — cards without one go last, in the order listed here.
 #   hidden    Optional. true leaves the card out of the deck entirely.
 #   link      Optional URL. Clicking the bottom half of the card front opens it.
+#   alt       Optional. The card's text, for screen readers and search engines
+#             (the card art is an image). Falls back to the name.
 #   image     Filename (without extension) from /assets/cards/ — e.g. 1 → 1.png
 #
 # Back images are cycled automatically from the backs list below.
@@ -24,22 +26,26 @@ backs:
 cards:
   - id: welcome
     name: Welcome Page
+    alt: "Hello! We are Philip, Theo and Ben. Together we create delightful, confusing and highly unique games that make the player feel clever."
     image: 1
     position: 1
 
   - id: middle-bit
     name: The Middle Bit
+    alt: "The Middle Bit: a new Venn Diagram puzzle every day. Can you spot what the seemingly unconnected have in common? Click to play."
     image: 4
     position: 2
     link: https://the-middle-bit.co.uk/
 
   - id: wangle
     name: Wangle
+    alt: "Wangle: a bit like a crossword and a maths problem had a baby, and then the baby fell in love with pop culture. In the pitching stage."
     image: 3
     position: 3
 
   - id: contact-us
     name: Contact Us
+    alt: "See anything that interests you? Drop us an email and say hi: hello@suzyparkergames.co.uk"
     position: 4
     image: 6
 
