@@ -4,6 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Suzy Parker Games</title>
+  <meta name="description" content="Suzy Parker Games is a small UK studio making delightful, confusing and highly unique puzzle games, including The Middle Bit, a new Venn Diagram puzzle every day.">
+  <link rel="canonical" href="https://suzyparkergames.co.uk/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Suzy Parker Games">
+  <meta property="og:title" content="Suzy Parker Games">
+  <meta property="og:description" content="Suzy Parker Games is a small UK studio making delightful, confusing and highly unique puzzle games, including The Middle Bit, a new Venn Diagram puzzle every day.">
+  <meta property="og:url" content="https://suzyparkergames.co.uk/">
+  <meta property="og:image" content="https://suzyparkergames.co.uk/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Hello! We are Philip, Theo and Ben. We love making games that make the player feel clever.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://suzyparkergames.co.uk/#org",
+      "name": "Suzy Parker Games",
+      "legalName": "Suzy Parker Games Limited",
+      "url": "https://suzyparkergames.co.uk/",
+      "logo": "https://suzyparkergames.co.uk/assets/sp-logo-header.png",
+      "email": "hello@suzyparkergames.co.uk",
+      "description": "Suzy Parker Games is a small UK studio making delightful, confusing and highly unique puzzle games, including The Middle Bit, a new Venn Diagram puzzle every day.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "36 Harvey Street",
+        "addressLocality": "Folkestone",
+        "addressRegion": "Kent",
+        "postalCode": "CT20 1LE",
+        "addressCountry": "GB"
+      },
+      "founder": [
+        {
+          "@type": "Person",
+          "name": "Philip"
+        },
+        {
+          "@type": "Person",
+          "name": "Theo"
+        },
+        {
+          "@type": "Person",
+          "name": "Ben"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://suzyparkergames.co.uk/#website",
+      "url": "https://suzyparkergames.co.uk/",
+      "name": "Suzy Parker Games",
+      "publisher": {
+        "@id": "https://suzyparkergames.co.uk/#org"
+      }
+    },
+    {
+      "@type": "VideoGame",
+      "name": "The Middle Bit",
+      "url": "https://the-middle-bit.co.uk/",
+      "description": "A new Venn Diagram puzzle every day — spot what the seemingly unconnected have in common.",
+      "genre": "Puzzle",
+      "gamePlatform": "Web browser",
+      "playMode": "SinglePlayer",
+      "image": "https://the-middle-bit.co.uk/logos/1080.png",
+      "author": {
+        "@id": "https://suzyparkergames.co.uk/#org"
+      },
+      "publisher": {
+        "@id": "https://suzyparkergames.co.uk/#org"
+      }
+    }
+  ]
+}
+  </script>
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,11 +111,25 @@
     <img src="/assets/sp-logo-header.png" alt="Suzy Parker Games" />
   </a>
 
+  <!-- The cards are images, so their text is repeated here for screen
+       readers, search engines and AI agents. Keep it in step with the cards. -->
+  <main class="sr-only">
+    <h1>Suzy Parker Games</h1>
+    <p>We are Philip, Theo and Ben. Together we create delightful, confusing and highly unique games that empower players to feel capable of solving puzzles. To put it simply, we love making games that make the player feel clever (especially when they are not!).</p>
+    <h2>Our games</h2>
+    <h3><a href="https://the-middle-bit.co.uk/">The Middle Bit</a></h3>
+    <p>A new Venn Diagram puzzle every day. Can you spot what the seemingly unconnected have in common? <a href="https://the-middle-bit.co.uk/">Play The Middle Bit</a>.</p>
+    <h3>Wangle</h3>
+    <p>Forget your GCSE maths book, this game takes angles to a whole new degree. Wangle is a bit like a crossword and a maths problem had a baby, and then the baby fell in love with pop culture. We're in the pitching stage of Wangle, so that's all we can reveal for now!</p>
+    <h2>Contact us</h2>
+    <p>We're a friendly bunch and we're always looking for new exciting opportunities. Drop us an email and say hi: <a href="mailto:hello@suzyparkergames.co.uk">hello@suzyparkergames.co.uk</a>.</p>
+  </main>
+
   <div class="card-stage" id="cardStage">
     <div class="card-tilt-stage" id="cardTiltStage">
       <div class="card-wrapper" id="cardWrapper">
         <div class="playing-card card-front">
-          <img class="card-image" id="cardFrontImage" src="/assets/cards/1.png" alt="Card front" />
+          <img class="card-image" id="cardFrontImage" src="/assets/cards/1.png" alt="Hello! We are Philip, Theo and Ben." />
         </div>
         <div class="playing-card card-back">
           <img class="card-image" id="cardBackImage" src="/assets/cards/back_1.png" alt="Card back" />

@@ -1,0 +1,10 @@
+# Suzy Parker Games — https://suzyparkergames.co.uk
+# Everyone is welcome, search engines and AI agents alike.
+#
+# Note: Cloudflare's zone-level bot settings act before this file is read,
+# and its "managed robots.txt" can prepend its own rules to it.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://suzyparkergames.co.uk/sitemap.xml

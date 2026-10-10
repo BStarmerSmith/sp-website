@@ -15,6 +15,7 @@ export interface YamlCard {
   image: number
   hidden?: boolean
   link?: string
+  alt?: string
   side?: YamlSide
 }
 
@@ -39,7 +40,7 @@ export function buildCards(deck: YamlDeck): Card[] {
     link: entry.link,
     front: {
       src: `/assets/cards/${entry.image}.png`,
-      alt: entry.id,
+      alt: entry.alt ?? entry.name ?? entry.id,
     },
     back: {
       src: `/assets/cards/${backs[i % backs.length]}`,
