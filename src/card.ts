@@ -153,9 +153,9 @@ export class CardDeck {
 
   // ── Transforms ───────────────────────────────────────────
 
-  private applyCardTransform(animate: boolean): void {
+  private applyCardTransform(animate: boolean, dur = this.dur): void {
     const degrees = this.step * 180
-    this.wrapper.style.transition = animate ? `transform ${this.dur}ms ease-in-out` : 'none'
+    this.wrapper.style.transition = animate ? `transform ${dur}ms ease-in-out` : 'none'
     this.wrapper.style.transform = `translateX(${this.settledCardX}px) rotateY(${degrees}deg)`
   }
 
@@ -191,42 +191,45 @@ export class CardDeck {
 
   advance(direction: 1 | -1): void {
     if (this.sideOpen || this.animating) return
-    const nextStep = this.step + direction
+    // Always land on a front: one input turns a whole card (front → back →
+    // next front) in a single rotation, so the deck never rests on a back.
+    // From a back (odd step) it settles on the nearest front that way.
+    const nextStep = direction === 1
+      ? (this.cardIndex() + 1) * 2
+      : Math.ceil(this.step / 2 - 1) * 2
     if (nextStep < 0 || nextStep > this.maxStep) return
 
     this.animating = true
 
-    const fromCardIdx = this.cardIndex(this.step)
-    const toCardIdx = this.cardIndex(nextStep)
-    const cardChanges = fromCardIdx !== toCardIdx
+    const toCard = this.cards[this.cardIndex(nextStep)]
+    const startsOnFront = this.step % 2 === 0
+    const halfTurns = Math.abs(nextStep - this.step)
+    const dur = this.dur * 0.75 * halfTurns
 
-    if (cardChanges) {
-      const toCard = this.cards[toCardIdx]
-      if (direction === 1) {
-        this.setFace(this.frontImg, toCard.front)
-        this.setLink(toCard)
-      } else {
-        this.setFace(this.backImg, toCard.back)
-      }
+    // The back seen mid-turn: going forward it's the current card's, going
+    // back it's the previous card's — as it was when each half-flip stopped
+    if (startsOnFront && direction === -1) this.setFace(this.backImg, toCard.back)
+
+    const swapFront = () => {
+      this.setFace(this.frontImg, toCard.front)
+      this.setLink(toCard)
     }
+    // Swap the front while it faces away: now if we start on a back,
+    // otherwise at the halfway point of the turn (ease-in-out is symmetric,
+    // so that is exactly when the back faces the viewer)
+    if (startsOnFront) setTimeout(swapFront, dur / 2)
+    else swapFront()
 
     this.step = nextStep
-    this.applyCardTransform(true)
+    this.applyCardTransform(true, dur)
     this.emitState()
 
     setTimeout(() => {
-      if (cardChanges) {
-        const toCard = this.cards[this.cardIndex()]
-        if (direction === 1) {
-          this.setFace(this.backImg, toCard.back)
-        } else {
-          this.setFace(this.frontImg, toCard.front)
-          this.setLink(toCard)
-        }
-        this.syncSidePage()
-      }
+      this.setFace(this.backImg, toCard.back)
+      this.setBackFilmEffect(this.cardIndex())
+      this.syncSidePage()
       this.animating = false
-    }, this.dur)
+    }, dur)
   }
 
   jumpToCard(targetCardIndex: number): void {
@@ -266,26 +269,8 @@ export class CardDeck {
         }, 50) // Brief delay to ensure DOM updates
       }, this.dur + 200) // Add 200ms pause between flips to reduce disorientation
     } else {
-      // For adjacent cards, flip through sequentially
-      const targetStep = targetCardIndex * 2
-      const direction = targetStep > this.step ? 1 : -1
-      const stepsToMove = Math.abs(targetStep - this.step)
-      
-      let stepsDone = 0
-      const doFlip = () => {
-        if (stepsDone >= stepsToMove) {
-          return
-        }
-        
-        stepsDone++
-        this.advance(direction)
-        
-        if (stepsDone < stepsToMove) {
-          setTimeout(doFlip, this.dur)
-        }
-      }
-      
-      doFlip()
+      // Adjacent card: one advance turns straight to its front
+      this.advance(targetCardIndex > currentCardIdx ? 1 : -1)
     }
   }
 
@@ -293,11 +278,18 @@ export class CardDeck {
 
   private bindEvents(): void {
 
-    // Wheel: vertical flips cards
+    // Wheel: vertical flips cards. A trackpad swipe is a burst of events
+    // with a long momentum tail, so one burst turns one card: after a turn,
+    // wheel input stays locked until the wheel has been quiet for a moment.
+    let wheelLocked = false
+    let wheelQuietTimer: ReturnType<typeof setTimeout> | undefined
     window.addEventListener('wheel', (e) => {
       e.preventDefault()
-      if (this.animating || this.sideOpen) return
+      clearTimeout(wheelQuietTimer)
+      wheelQuietTimer = setTimeout(() => { wheelLocked = false }, 200)
+      if (wheelLocked || this.animating || this.sideOpen) return
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        wheelLocked = true
         this.advance(e.deltaY > 0 ? 1 : -1)
       }
     }, { passive: false })
