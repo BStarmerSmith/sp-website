@@ -283,6 +283,17 @@
     border-radius: 22px;
   }
 
+  /* Clickable bottom half of a card front that has a `link` in cards.yaml */
+  .card-link {
+    position: absolute;
+    inset: 50% 0 0 0;
+    cursor: pointer;
+  }
+
+  .card-link[hidden] {
+    display: none;
+  }
+
   /* ── Side page ───────────────────────────────────────── */
   /*
    * Side pages are position:absolute inside .card-stage.

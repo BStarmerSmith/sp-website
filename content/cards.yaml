@@ -8,6 +8,7 @@
 #             filename. Gaps are fine (only relative order matters).
 #             Optional — cards without one go last, in the order listed here.
 #   hidden    Optional. true leaves the card out of the deck entirely.
+#   link      Optional URL. Clicking the bottom half of the card front opens it.
 #   image     Filename (without extension) from /assets/cards/ — e.g. 1 → 1.png
 #
 # Back images are cycled automatically from the backs list below.
@@ -30,6 +31,7 @@ cards:
     name: The Middle Bit
     image: 4
     position: 2
+    link: https://the-middle-bit.co.uk/
 
   - id: wangle
     name: Wangle

@@ -13,6 +13,8 @@ export interface Card {
   front: CardFace
   back: CardFace
   sidePage?: SidePage
+  /** When set, the bottom half of the card front links here */
+  link?: string
 }
 
 export interface CardDeckState {
@@ -41,6 +43,7 @@ export class CardDeck {
   private readonly dur: number
   private readonly onStateChange?: (state: CardDeckState) => void
   private readonly sidePageEl: HTMLElement
+  private readonly linkEl: HTMLAnchorElement
 
   // Each card = two steps: even step = front, odd step = back
   private step = 0
@@ -68,6 +71,11 @@ export class CardDeck {
 
     this.sidePageEl = document.createElement('div')
     this.stage.appendChild(this.sidePageEl)
+
+    // Lives inside the front face so it flips with it and is hidden by its backface
+    this.linkEl = document.createElement('a')
+    this.linkEl.className = 'card-link'
+    frontImg.parentElement!.appendChild(this.linkEl)
 
     this.loadCard(0)
     this.syncSidePage()
@@ -99,7 +107,18 @@ export class CardDeck {
     const card = this.cards[index]
     this.setFace(this.frontImg, card.front)
     this.setFace(this.backImg, card.back)
+    this.setLink(card)
     this.setBackFilmEffect(index)
+  }
+
+  private setLink(card: Card): void {
+    this.linkEl.hidden = !card.link
+    if (card.link) {
+      this.linkEl.href = card.link
+      this.linkEl.setAttribute('aria-label', card.name ? `Play ${card.name}` : 'Open link')
+    } else {
+      this.linkEl.removeAttribute('href')
+    }
   }
 
   private setBackFilmEffect(cardIndex: number): void {
@@ -185,6 +204,7 @@ export class CardDeck {
       const toCard = this.cards[toCardIdx]
       if (direction === 1) {
         this.setFace(this.frontImg, toCard.front)
+        this.setLink(toCard)
       } else {
         this.setFace(this.backImg, toCard.back)
       }
@@ -201,6 +221,7 @@ export class CardDeck {
           this.setFace(this.backImg, toCard.back)
         } else {
           this.setFace(this.frontImg, toCard.front)
+          this.setLink(toCard)
         }
         this.syncSidePage()
       }

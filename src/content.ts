@@ -14,6 +14,7 @@ export interface YamlCard {
   position?: number
   image: number
   hidden?: boolean
+  link?: string
   side?: YamlSide
 }
 
@@ -35,6 +36,7 @@ export function buildCards(deck: YamlDeck): Card[] {
 
   return sorted.map((entry, i) => ({
     name: entry.name,
+    link: entry.link,
     front: {
       src: `/assets/cards/${entry.image}.png`,
       alt: entry.id,
