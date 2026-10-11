@@ -13,3 +13,13 @@
 /contact-us.html /  301
 /coming-soon     /  301
 /coming-soon.html /  301
+
+# Short links to each game's own domain, so suzyparkergames.co.uk/<game> is
+# something you can say out loud. 301 because the game's domain is its
+# permanent home; the :splat keeps a deep link's path (e.g.
+# /the-middle-bit/how-to-play) rather than dropping it on the home page.
+# The other spellings are the ones people actually type.
+/the-middle-bit    https://the-middle-bit.co.uk/  301
+/the-middle-bit/*  https://the-middle-bit.co.uk/:splat  301
+/middlebit         https://the-middle-bit.co.uk/  301
+/middle-bit        https://the-middle-bit.co.uk/  301
